@@ -1,0 +1,22 @@
+spring:
+  output:
+    ansi:
+      enabled: always
+  application:
+    name: account-cmd
+  banner:
+    location: static/banner.txt
+  data:
+    mongodb:
+      host: 144.126.140.30
+      port: 27018
+      database: test
+      username: root
+      password: King5263
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+server:
+  port: 8082

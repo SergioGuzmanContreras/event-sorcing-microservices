@@ -1,4 +1,7 @@
 **/.project
 **/.settings
+**/.classpath
+**/.factorypath
+**/target
 mongo/
 mysql_data/

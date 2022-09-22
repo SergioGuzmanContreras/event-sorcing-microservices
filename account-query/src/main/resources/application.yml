@@ -1,0 +1,41 @@
+spring:
+  output:
+    ansi:
+      enabled: always
+  application:
+    name: account-query
+  banner:
+    location: static/banner.txt
+  datasource:
+    url: jdbc:mysql://144.126.140.30:3307/test?serverTimezone=GMT-6&createDatabaseIfNotExist=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: admin
+    password: admin5263
+    dbcp2:
+      test-while-idle: true
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+  kafka:
+    listener:
+      ack-mode: MANUAL_IMMEDIATE
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: bankaccConsumer
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: '*'
+server:
+  port: 8081
